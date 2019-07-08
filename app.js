@@ -2,16 +2,26 @@ const https = require("https");
 
 var express = require("express");
 var app = express();
-app.use(express.static("public"));
 
-app.get("/url", (req, res, next) => {
-  res.json(["Tony", "Lisa", "Michael", "Ginger", "Food"]);
-});
+var formatedDate = function() {
+  var today = new Date();
+  var options = { year: "numeric", month: "long", day: "numeric" };
+  var dateString = today.toLocaleDateString("en-US", options);
+  dateString = dateString.split(",").join("");
+  dateString = dateString.replace(/\s/g, "-");
+  return dateString;
+};
+
+var todayDate = formatedDate();
+
+app.use(express.static("public"));
 
 app.get("/lunch-list", (req, res, next) => {
   https
     .get(
-      "https://trouble.tools/506/wp-json/wp/v2/multiple-post-type?slug=june-18-2019&type[]=menu",
+      "https://trouble.tools/506/wp-json/wp/v2/multiple-post-type?slug=" +
+        todayDate +
+        "&type[]=menu",
       resp => {
         let data = "";
 
