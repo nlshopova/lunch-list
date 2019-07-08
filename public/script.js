@@ -11,7 +11,8 @@ function getLunchList() {
       .map(
         item =>
           `<li class="lunch-item">
-            <a id="react" onmouseover="showReactions(this)" onmouseleave="hideReactions(this)">Like
+            <a id="react" onmouseover="showReactions(this)" onmouseleave="hideReactions(this)">
+            <span class="like">Like</span>
             <div class="reactions">
               <button id="love" onclick="toggleClass(this, 'selected')">
                 <svg id="Layer_1" style="enable-background:new 0 0 128 128;" version="1.1" viewBox="0 0 128 128" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -40,11 +41,12 @@ function getLunchList() {
 getLunchList();
 
 function toggleClass(element, className) {
+  element.parentElement.previousElementSibling.innerHTML = element.innerHTML;
   element.classList.toggle(className);
 }
 function showReactions(element) {
-  element.firstElementChild.classList.add("show");
+  element.getElementsByClassName("reactions")[0].classList.add("show");
 }
 function hideReactions(element) {
-  element.firstElementChild.classList.remove("show");
+  element.getElementsByClassName("reactions")[0].classList.remove("show");
 }

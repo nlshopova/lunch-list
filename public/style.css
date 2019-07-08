@@ -46,6 +46,10 @@ body::after {
   position: relative;
   cursor: pointer;
 }
+.like {
+  width: 20px;
+  display: inline-block;
+}
 .reactions {
   display: none;
 }

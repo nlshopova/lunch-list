@@ -7,8 +7,8 @@ var formatedDate = function() {
   var today = new Date();
   var options = { year: "numeric", month: "long", day: "numeric" };
   var dateString = today.toLocaleDateString("en-US", options);
-  dateString = dateString.split(",").join("");
-  dateString = dateString.replace(/\s/g, "-");
+  dateString = dateString.split(", ").join("-");
+
   return dateString;
 };
 
