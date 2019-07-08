@@ -38,10 +38,29 @@ body::after {
   height: 24px;
   outline: none;
 }
+
 .lunch-item button:hover {
   cursor: pointer;
 }
-
+#react {
+  position: relative;
+  cursor: pointer;
+}
+.reactions {
+  display: none;
+}
+.reactions.show {
+  display: inline-block;
+  position: absolute;
+  top: -35px;
+  display: block;
+  padding: 5px 15px;
+  width: 65px;
+  background: #fff;
+}
+.reactions button + button {
+  margin-left: 10px;
+}
 button#love.selected .heart-inside,
 button#star.selected .star-inside {
   fill: black;
