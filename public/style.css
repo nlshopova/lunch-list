@@ -1,3 +1,8 @@
+/*Variables*/
+:root  {
+  --button-color: #4eaa00;
+  --border-color: #dadada;
+}
 body {
   font-family: "Courgette", cursive;
 }
@@ -21,51 +26,69 @@ body::after {
   margin: 0 auto;
   padding-top: 80px;
 }
+.heart-outline, .star-outline {
+  fill: var(--button-color);
+}
 .lunch-items {
   list-style: none;
   background: rgba(255, 255, 255, 0.7);
   padding: 40px;
-  font-size: 1.2em;
+  font-size: 1.25rem;
+  line-height:1em;
+  box-shadow: 0 0 20px var(--border-color);
 }
 .lunch-item {
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0;
+  border-bottom:1px solid var(--border-color);
+  display: flex;
+  align-items: center;
 }
-.lunch-item button {
-  background: transparent;
-  border: 0;
-  padding: 0;
-  width: 24px;
-  height: 24px;
-  outline: none;
-}
-
-.lunch-item button:hover {
-  cursor: pointer;
-}
-#react {
+.react {
   position: relative;
   cursor: pointer;
 }
-.like {
-  width: 20px;
+/*Main react button next to the text*/
+.like-button {
+  width: 1.25em;
+  margin-right: 15px;
   display: inline-block;
 }
+
+.like-button.selected .heart-inside, .like-button.selected .star-inside {
+  fill: var(--button-color);
+}
+/*The "popup" with reactions*/
 .reactions {
   display: none;
+  padding: 5px 10px 0px 10px;
+  width: calc(2em + 30px);
+  background: #fff;
+  position: absolute;
+  top: -35px;
+  left:-10px;
+  box-shadow: 0 0 10px var(--border-color);
 }
 .reactions.show {
   display: inline-block;
-  position: absolute;
-  top: -35px;
-  display: block;
-  padding: 5px 15px;
-  width: 65px;
-  background: #fff;
+}
+.reactions button {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  width: 1em;
+  font-size: 1.25em;
+  outline: none;
 }
 .reactions button + button {
   margin-left: 10px;
 }
-button#love.selected .heart-inside,
-button#star.selected .star-inside {
-  fill: black;
+.reactions button:hover {
+  cursor: pointer;
 }
+
+.reactions .love:hover .heart-inside,
+.reactions .star:hover .star-inside {
+  fill: var(--button-color);
+}
+
